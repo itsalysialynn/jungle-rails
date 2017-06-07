@@ -74,3 +74,14 @@ main section.products-show {
 }
 
 
+aside.soldout {
+    position: absolute;
+    color: white;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background-color: red;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 4px;
+    font-size: 0.8em;
+}

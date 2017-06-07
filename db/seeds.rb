@@ -71,7 +71,7 @@ cat1.products.create!({
   name:  'Russian Spy Shoes',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel5.jpg'),
-  quantity: 8,
+  quantity: 12,
   price: 1_225.00
 })
 
@@ -79,7 +79,7 @@ cat1.products.create!({
   name:  'Human Feet Shoes',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel6.jpg'),
-  quantity: 82,
+  quantity: 0,
   price: 224.50
 })
 
