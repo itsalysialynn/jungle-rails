@@ -3,7 +3,12 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
-
+<section class="cart-show">
+  <h3>
+    <% if cart.size == 0 %>
+      Your Cart is empty. Add items to your cart by visiting the Jungle <%= link_to "Home Page", '/' %>
+    <% else %>
+  </h3>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -49,5 +54,5 @@
       <% end %>
     </div>
   </div>
-
+ <% end %>
 </section>
