@@ -4,7 +4,8 @@ class Notifier < ApplicationMailer
 
   def confirmation(order)
     @order = order
-    mail(to: @order.email,
+    subject = "Order No. #{@order.id}"
+    mail(to: @order.email, subject: subject,
     bcc: ["itsalysia@gmail.com"])
   end
 end
