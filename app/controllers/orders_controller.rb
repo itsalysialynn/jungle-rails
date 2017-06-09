@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+  
   def show
     @order = Order.find(params[:id])
   end
@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
       redirect_to order, notice: 'Your Order has been placed.'
     else
       redirect_to cart_path, error: order.errors.full_messages.first
-    end
+  end
 
   rescue Stripe::CardError => e
     redirect_to cart_path, error: e.message
@@ -22,8 +22,8 @@ class OrdersController < ApplicationController
 
   private
 
+  # empty hash = no products in cart 
   def empty_cart!
-    # empty hash means no products in cart :)
     update_cart({})
   end
 
@@ -43,18 +43,20 @@ class OrdersController < ApplicationController
       stripe_charge_id: stripe_charge.id, # returned by stripe
     )
     cart.each do |product_id, details|
-      if product = Product.find_by(id: product_id)
-        quantity = details['quantity'].to_i
-        order.line_items.new(
-          product: product,
-          quantity: quantity,
-          item_price: product.price,
-          total_price: product.price * quantity
-        )
-      end
-    end
-    order.save!
-    order
+    if product = Product.find_by(id: product_id)
+      quantity = details['quantity'].to_i
+      order.line_items.new(
+        product: product,
+        quantity: quantity,
+        item_price: product.price,
+        total_price: product.price * quantity
+      )
+  end
+end
+
+  order.save!
+
+  order
   end
 
   # returns total in cents not dollars (stripe uses cents as well)
@@ -65,7 +67,8 @@ class OrdersController < ApplicationController
         total += p.price_cents * details['quantity'].to_i
       end
     end
-    total
-  end
 
+  total
+
+  end
 end

@@ -21,12 +21,12 @@ Rails.application.routes.draw do
 
 # config/routes.rb
 
-    get '/login' => 'sessions#new'
-    post '/login' => 'sessions#create'
-    get '/logout' => 'sessions#destroy'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
-    get '/signup' => 'users#new'
-    post '/users' => 'users#create'
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
   
 end
 
