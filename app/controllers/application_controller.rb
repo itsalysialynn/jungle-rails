@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  
+
   protect_from_forgery with: :exception
 
   def current_user
@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   end
   
   helper_method :current_user
+
 
   def authorize
     redirect_to '/login' unless current_user
@@ -18,7 +19,6 @@ class ApplicationController < ActionController::Base
     # value = cookies[:cart] || JSON.generate({})
     @cart ||= cookies[:cart].present? ? JSON.parse(cookies[:cart]) : {}
   end
-
   helper_method :cart
 
   def update_cart(new_cart)
