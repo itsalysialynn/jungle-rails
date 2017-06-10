@@ -1,7 +1,7 @@
 <section class="products-show">
 
   <header class="page-header">
-    <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
+  <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
   </header>
 
   <article class="product-detail">
@@ -14,23 +14,22 @@
 
       <div class="col-sm-8">
         <dl class="dl-horizontal">
-          <dt>Name</dt>
-          <dd><%= @product.name %></dd>
-          <dt>Description</dt>
-          <dd><%= @product.description %></dd>
-          <dt>Quantity</dt>
-          <dd><%= @product.quantity %></dd>
-          <dt>Price</dt>
-          <dd><%= @product.price %></dd>
+        <dt>Name</dt>
+        <dd><%= @product.name %></dd>
+        <dt>Description</dt>
+        <dd><%= @product.description %></dd>
+        <dt>Quantity</dt>
+        <dd><%= @product.quantity %></dd>
+        <dt>Price</dt>
+        <dd><%= @product.price %></dd>
         </dl>
       </div>
     </div>
-    <h2>Whales</h2> 
-
- <% if current_user %>
-    <h2>New review</h2>
-
-    <%= form_for([@product, @new_review]) do |form| %>
+    <div class="reviews">
+      <h2>REVIEWS</h2> 
+      <% if current_user %>
+        <h2>New review</h2>
+        <%= form_for([@product, @new_review]) do |form| %>
       <div class="field">
         <%= form.label :description %>
         <%= form.text_area :description, id: :review_description, user_id: current_user.id %>
@@ -38,22 +37,19 @@
         <%= form.select :rating, ['1', '2', '3', '4', '5'] %>
         <%= form.hidden_field :user_id, value: current_user.id %>
       </div>
-      </div>
-      <div class="actions">
-        <%= form.submit %>
-      </div>
-    <% end %>
-    <% else %>
+    </div>
+    <div class="actions">
+      <%= form.submit 'Create Review', :class => 'btn btn-primary' %>
+      <% end %>
+      <% else %>
       <p>Please <%= link_to "login", '/login' %> to create a new review.</p>
+      <% end %>
+    </div>
+    <% if @product.reviews.empty? %>
+      <p>No reviews for this product</p>
+    <% else %>
+      <%= render @sorted_reviews %>
     <% end %>
-  </div>
 
-<% if @product.reviews.empty? %>
-  <p>No reviews for this product</p>
-<% else %>
-  <%= render @sorted_reviews %>
-<% end %>
-
-
- </article>
+  </article>
 </section>

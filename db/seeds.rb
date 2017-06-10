@@ -138,28 +138,28 @@ Review.destroy_all
 
 Review.create!({
   product_id: 9,
-  user_id: 2,
+  user_id: 1,
   description: 'I love it, it makes my life so much easier',
   rating: 5
 })
 
 Review.create!({
   product_id: 4,
-  user_id: 4,
+  user_id: 2,
   description: 'These are not hipster at all!',
   rating: 1
 })
 
 Review.create!({
   product_id: 3,
-  user_id: 2,
+  user_id: 1,
   description: 'Goes great with the hipster socks',
   rating: 4
 })
 
 Review.create!({
   product_id: 9,
-  user_id: 1,
+  user_id: 2,
   description: 'Too big',
   rating: 2
 })

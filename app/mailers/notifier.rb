@@ -1,6 +1,6 @@
 class Notifier < ApplicationMailer
-     default from: 'no-reply@jungle.com',
-          return_path: 'no-reply@jungle.com'
+  default from: 'no-reply@jungle.com',
+    return_path: 'no-reply@jungle.com'
 
   def confirmation(order)
     @order = order
