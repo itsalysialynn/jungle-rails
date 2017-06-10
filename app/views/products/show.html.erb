@@ -25,7 +25,35 @@
         </dl>
       </div>
     </div>
+    <h2>Whales</h2> 
 
-  </article>
+ <% if current_user %>
+    <h2>New review</h2>
 
+    <%= form_for([@product, @new_review]) do |form| %>
+      <div class="field">
+        <%= form.label :description %>
+        <%= form.text_area :description, id: :review_description, user_id: current_user.id %>
+        <%= form.label :rating %>
+        <%= form.select :rating, ['1', '2', '3', '4', '5'] %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+      </div>
+      </div>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+    <% else %>
+      <p>Please <%= link_to "login", '/login' %> to create a new review.</p>
+    <% end %>
+  </div>
+
+<% if @product.reviews.empty? %>
+  <p>No reviews for this product</p>
+<% else %>
+  <%= render @sorted_reviews %>
+<% end %>
+
+
+ </article>
 </section>

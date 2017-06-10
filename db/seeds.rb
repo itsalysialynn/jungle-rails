@@ -132,5 +132,42 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+puts "Recreating Reviews"
 
+Review.destroy_all
+
+Review.create!({
+  product_id: 9,
+  user_id: 2,
+  description: 'I love it, it makes my life so much easier',
+  rating: 5
+})
+
+Review.create!({
+  product_id: 4,
+  user_id: 4,
+  description: 'These are not hipster at all!',
+  rating: 1
+})
+
+Review.create!({
+  product_id: 3,
+  user_id: 2,
+  description: 'Goes great with the hipster socks',
+  rating: 4
+})
+
+Review.create!({
+  product_id: 9,
+  user_id: 1,
+  description: 'Too big',
+  rating: 2
+})
+
+Review.create!({
+  product_id: 7,
+  user_id: 3,
+  description: 'It was okay; serves its purpose',
+  rating: 3
+})
 puts "DONE!"
