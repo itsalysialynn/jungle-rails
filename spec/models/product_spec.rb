@@ -40,4 +40,14 @@ RSpec.describe Product, type: :model do
       expect(quantity).to_not be_valid
     end
   end
+
+  describe 'Validations' do
+    it('should be invalid if category is not present') do
+      category = Category.new(name: 'apparel')
+      quantity = Product.new(name: 'a', price_cents: 40, quantity: 1)
+      expect(quantity).to_not be_valid
+    end
+  end
 end
+
+
