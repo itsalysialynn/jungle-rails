@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Visitor navigates to home page', type: :feature, js: true do
-
-  # SETUP
+RSpec.feature "Cart increments when add to cart is pressed",, type: :feature, js: true do
   before :each do
     @category = Category.create! name: 'Apparel'
 
@@ -17,12 +15,12 @@ RSpec.feature 'Visitor navigates to home page', type: :feature, js: true do
     end
   end
 
-  scenario 'They see all products' do
-    # ACT
-    visit root_path
-    first('article.product').find_link('Add').click
+scenario "add_product_to_cart" do
+  visit root_path
 
-    # VERIFY
-    expect(page).to have_content 'My Cart (1)'
+  first('article.product').find_link('Add').click
+
+  save_screenshot
+
   end
 end
